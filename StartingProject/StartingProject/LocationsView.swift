@@ -15,7 +15,11 @@ struct LocationsView: View {
             .cornerRadius(20)
             
             NavigationView {
-                EmptyView() // 3
+                List(model.restaurants, id: \.self) { restaurant in
+                                    NavigationLink(destination: ReservationForm(restaurant)) {
+                                        RestaurantView(restaurant)
+                                    }
+                                }
                 .navigationBarTitle("")
                 .navigationBarHidden(true)
             }
